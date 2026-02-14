@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 5f; 
     [SerializeField] private float aireRozamiento = 0.2f; 
 
-    [SerializeField] private Transform modeloVisual; // Arrastra aquí al hijo (el Oso)
+    [SerializeField] private Transform modeloVisual; 
     [SerializeField] private float velocidadGiro = 10f; // Velocidad de rotación del modelo
 
     private float moveH;
@@ -20,10 +20,10 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        if(rb == null) rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         
-        // NUEVO: Protección por si olvidas asignar el modelo
-        if (modeloVisual == null) modeloVisual = transform.GetChild(0); 
+        
+        modeloVisual = transform.GetChild(0); 
     }
 
     void Update()
@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = false; 
         }
     }
-
+    // Comparación de colisiones con las plataformas (suelo) para la lógica de salto.
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground")) isGrounded = true;
