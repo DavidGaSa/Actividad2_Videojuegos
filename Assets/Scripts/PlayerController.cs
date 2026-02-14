@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // --- 1. CÁLCULO DE DIRECCIÓN (NUEVO) ---
+        // 1. CÁLCULO DE DIRECCIÓN 
         // En lugar de usar new Vector3(moveH, 0, moveV), calculamos según la cámara
         Vector3 camForward = Camera.main.transform.forward;
         Vector3 camRight = Camera.main.transform.right;
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         Vector3 direccion = (camForward * moveV + camRight * moveH).normalized;
 
 
-        // --- 2. APLICACIÓN DE FUERZA (TU LÓGICA ANTERIOR) ---
+        //2. APLICACIÓN DE FUERZA
         if (isGrounded)
         {
             rb.AddForce(direccion * velocidad, ForceMode.Force);
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(direccion * velocidad * aireRozamiento, ForceMode.Force);
         }
 
-        // --- 3. ROTACIÓN DEL MODELO (NUEVO) ---
+        // 3. ROTACIÓN DEL MODELO
         // Si nos estamos moviendo, giramos el personaje hacia esa dirección
         if (direccion != Vector3.zero && modeloVisual != null)
         {
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
             modeloVisual.rotation = Quaternion.Slerp(modeloVisual.rotation, rotacionObjetivo, velocidadGiro * Time.fixedDeltaTime);
         }
 
-        // --- 4. SALTO (TU LÓGICA ANTERIOR) ---
+        // 4. SALTO 
         if (jump)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
     public void Reaparece()
     {
-        // Si caemos por debajo de -10 en Y, hacemos respawn
+        // Si caemos por debajo de una altura y, reaparecemos.
         transform.position = new Vector3(0f, 0f, 0f);
         rb.linearVelocity = Vector3.zero; // Detenemos cualquier movimiento residual
         Debug.Log("Has caído. Respawn!");
