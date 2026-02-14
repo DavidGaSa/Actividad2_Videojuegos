@@ -92,12 +92,10 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground")) isGrounded = false;
     }
 
-
     public void Reaparece()
     {
         // Si caemos por debajo de una altura y, reaparecemos.
         transform.position = new Vector3(0f, 0f, 0f);
         rb.linearVelocity = Vector3.zero; // Detenemos cualquier movimiento residual
-        Debug.Log("Has caído. Respawn!");
     }
 }
