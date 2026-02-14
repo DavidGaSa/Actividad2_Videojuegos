@@ -9,7 +9,7 @@ Otro aspecto a destacar el modelo visual (hacia donde mira el jugador) por medio
 
 ### SCRIPT FALLING PLATFORMS
 
-Indicamos que al detectar que el jugador ha tocado la plataforma (OnCollisionEnter), esta se destruye pasado un tiempo de 0.3s.
+Indicamos que al detectar que el jugador ha tocado la plataforma (OnCollisionEnter), esta se destruye pasado un tiempo de 0.3s (ajustables por el usuario).
 
 ### SCRIPT REAPARECER
 
