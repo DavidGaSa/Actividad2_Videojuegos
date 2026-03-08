@@ -16,14 +16,12 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded; 
     private bool jump; 
 
-    public float respawn;
+    private Vector3 posIncicial;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
-        
-        modeloVisual = transform.GetChild(0); 
+        posIncicial = transform.position;
     }
 
     void Update()
@@ -95,7 +93,7 @@ public class PlayerController : MonoBehaviour
     public void Reaparece()
     {
         // Si caemos por debajo de una altura y, reaparecemos.
-        transform.position = new Vector3(0f, 0f, 0f);
+        transform.position = posIncicial;
         rb.linearVelocity = Vector3.zero; // Detenemos cualquier movimiento residual
     }
 }

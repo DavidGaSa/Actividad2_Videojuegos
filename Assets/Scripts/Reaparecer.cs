@@ -1,18 +1,18 @@
-using UnityEditor.Callbacks;
 using UnityEngine;
 
-public class Reaparecer : MonoBehaviour
+// Este script se lo pones a la lava, pinchos o el vacío
+public class Reaparecer : MonoBehaviour 
 {
-    // Update is called once per frame
-    void FixedUpdate() {
-        
-    }
-
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        // Usamos CompareTag porque está más optimizado en Unity que usar ==
+        if (other.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerController>().Reaparece();
+            // 1. Avisamos al GameManager de que hemos perdido una vida
+            GameManager.Instance.QuitarVida(1);
+
+            // 2. Ejecutamos tu método para teletransportar al jugador
+            other.GetComponent<PlayerController>().Reaparece();
         }
     }
 }
