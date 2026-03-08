@@ -1,16 +1,15 @@
 using UnityEngine;
 
 public class Coleccionable : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+{    
+    public void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.CompareTag("Player"))
+        {
+            // Aquí puedes agregar la lógica para lo que sucede cuando el jugador recoge el coleccionable
+            Debug.Log("¡Coleccionable recogido!");
+            GameManager.Instance.AddCoin(1); // Agrega una moneda al GameManager
+            Destroy(gameObject); // Destruye el objeto coleccionable después de ser recogido
+        }
     }
 }
