@@ -20,7 +20,12 @@ public class ZonaDaño : MonoBehaviour
         {
             // Aquí puedes agregar la lógica para lo que sucede cuando el jugador entra en la zona de daño
             Debug.Log("¡Zona de daño activada!");
-            GameManager.Instance.QuitarVida(1); // Quita una vida al GameManager
+
+            // Quita una vida al GameManager
+            GameManager.Instance.QuitarVida(1);
+            
+            // Llama al método Reaparece del PlayerController para que el jugador reaparezca
+            other.GetComponent<PlayerController>().Reaparece();
         }
     }
 }

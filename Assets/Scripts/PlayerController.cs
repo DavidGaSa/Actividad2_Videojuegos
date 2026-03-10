@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
     public void Reaparece()
     {
         // Si caemos por debajo de una altura y, reaparecemos.
-        transform.position = posIncicial;
+        transform.position = posIncicial + Vector3.up * 1f;
         rb.linearVelocity = Vector3.zero; // Detenemos cualquier movimiento residual
     }
 }

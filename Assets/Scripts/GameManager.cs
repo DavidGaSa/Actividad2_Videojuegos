@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public event Action<int> OnCoinsChanged;
 
     public int Vidas => vidas; // Propiedad pública para acceder a las vidas
-    private int vidas;
+    [SerializeField] private int vidas = 3;
     public event Action<int> OnVidasChanged;
 
     private void Awake()
